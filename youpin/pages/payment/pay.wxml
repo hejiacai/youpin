@@ -1,0 +1,85 @@
+<!--pages/payment/pay.wxml-->
+<view wx:if="{{loaded}}">
+    <view wx:if="{{paytype=='shoporder'}}">
+        <view wx:if="{{userinfo && order && paytype && order.extras.payable }}">
+            <view style="padding-bottom:100rpx;">
+                <view class="payinfo">
+                    <view class="status">待支付</view>
+                    <view class="total">￥ {{order.extras.totalfee}} 元</view>
+                    <view class="details">订单编号：{{order.out_trade_no}}</view>
+                </view>
+
+                <view class="box">
+                    <view class="box-body">
+                        <view class="shopcart-items b-b">
+                            <block wx:for="{{order.extras.shoplists}}" wx:key="{{item.id}}">
+                                <block wx:for="{{item.extras.shopcarts}}" wx:for-index="index" wx:key="{{item.id}}">
+                                    <cartitem cartitem="{{item}}"></cartitem>
+                                </block>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="footer-full">
+                <button bindtap="payAction">
+                    <text class="icon-wxopen iconfont"> 微信支付</text>
+                    <text class="moenyUntil">￥</text>
+                    <text class="money">{{order.extras.totalfee}}</text>
+                </button>
+            </view>
+        </view>
+        <view wx:else class="nullData">
+            <text>当前状态不可支付</text>
+        </view>
+    </view>
+
+    <view wx:if="{{paytype=='shoporderlist'}}">
+        <view wx:if="{{userinfo && order && paytype && order.type=='created' }}">
+            <view class="payinfo">
+                <view class="status">
+                    {{order.extras.type_text}}
+                </view>
+                <view class="total">
+                    <text style="color:#999;text-decoration: line-through;" wx:if="{{order.totalfee !== order.computedfee}}"> ￥ {{order.computedfee}} 元</text> ￥ {{order.totalfee}} 元</view>
+                <view class="details">订单编号：{{order.out_trade_no}}</view>
+            </view>
+
+            <view class="shopcart-items b-b">
+                <view class="shopcart-item b-b" wx:for="{{order.extras.shopcarts}}" wx:for-index="index" wx:key="{{item.id}}">
+                    <view class="flex-wrp">
+                        <view>
+                            <view class="cover" style="background-image:url('{{item.product_mirror.cover[0]}}')"></view>
+                        </view>
+                        <view class="flex-grow">
+                            <view class="product-title">
+                                <view>{{item.product_mirror.name}}</view>
+                            </view>
+                            <view class="product-sku-attr">
+                                <view>{{item.sku_mirror.selection}}</view>
+                            </view>
+                            <view class="product-footer flex-wrp">
+                                <view class="product-price flex-grow">￥ {{item.price}} 元</view>
+                                <view class="product-empty">× {{item.amount}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="footer-full">
+                <button bindtap="payAction">
+                    <text class="icon-wxopen iconfont"> 微信支付</text>
+                    <text class="moenyUntil">￥</text>
+                    <text class="money">{{order.totalfee}}</text>
+                </button>
+            </view>
+        </view>
+        <view wx:else class="nullData">
+            <text>当前状态不可支付</text>
+        </view>
+    </view>
+</view>
+<view wx:else class="nullData">
+    <text>加载中</text>
+</view>

@@ -1,0 +1,165 @@
+/* pages/orders/trace.wxss */
+.trace {
+    background-color:#fff;
+}
+.trace +.trace {
+    margin-top:30rpx;
+}
+.trace-header {
+    position: relative;
+    padding: 20rpx 30rpx;
+    font-size: 30rpx;
+    color:#343434;
+    padding-left:0px;
+    margin-left:30rpx;
+}
+
+.shopcarts {
+    padding:0 30rpx;
+    padding-right:0px;
+}
+
+.shopcart-items {
+    background-color: #fff;
+}
+
+.shopcart-item {
+    padding: 30rpx 0;
+    font-size: 24rpx;
+    padding-right:30rpx;
+}
+
+.shopcart-items .shopcart-item:last-child::after {
+    display: none;
+}
+
+.product-choosen {
+    line-height: 180rpx;
+    padding-right: 30rpx;
+    font-size: 50rpx;
+    color: #999;
+}
+
+.product-choosen.checked {
+    color: #f96a5a;
+}
+
+.cover {
+    width: 176rpx;
+    height: 176rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: solid 1px #dfdfdf;
+    margin-right: 20rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.product-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #343434;
+    font-size: 28rpx;
+    font-weight: 300;
+    height: 70rpx;
+}
+
+.product-sku-attr {
+    height: 60rpx;
+    color: #999;
+    font-weight: 300;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.product-amount text {
+    border: solid 1px #dfdfdf;
+    display: inline-block;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    color: #343434;
+}
+
+.product-footer {
+    line-height: 50rpx;
+}
+
+.product-amount text:first-child {
+    border-right: none;
+}
+
+.product-amount text:last-child {
+    border-left: none;
+}
+
+.shopcart-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    background-color: #fff;
+    line-height: 100rpx;
+}
+.scroll-container {
+    white-space: nowrap;
+    height: 92rpx;
+    line-height: 92rpx;
+    position: relative;
+}
+
+.navbar-item {
+    display: inline-block;
+    padding: 0 40rpx;
+    line-height: 92rpx;
+    color: #353535;
+    position: relative;
+}
+
+.navbar-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 40rpx;
+    right: 40rpx;
+    height: 6rpx;
+    background-color: #cfa877;
+}
+
+.nullData {
+  background-color: #fff;
+  margin-top: 16rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #eee;
+  box-sizing: border-box;
+}
+
+.nullData text.iconfont {
+  display: inline-block;
+  font-size: 300rpx;
+  line-height: 2em;
+}
+
+.nullData text {
+  display: block;
+  color: #666;
+  padding-top:200rpx;
+}
+
+.attrs {
+    padding: 20rpx 30rpx;
+    font-size: 30rpx;
+    color:#666;
+    padding-left:0px;
+    margin-left:30rpx;
+}
+.inlineinput {
+    padding-left:30rpx;text-align: right;
+    line-height: 50rpx;
+    height:50rpx;
+}

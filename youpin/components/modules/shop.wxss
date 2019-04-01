@@ -1,0 +1,10 @@
+/* components/modules/shop.wxss */
+@import "/app.wxss";
+
+.shop-head .cover {height:160rpx;width:100%;padding:20rpx 40rpx;box-sizing: border-box;}
+.shop-head .content {height:120rpx;width:100%;}
+.shop-head .headerimg {width:120rpx;height:120rpx;border:solid 2px #fff;margin-right:10rpx;}
+.shop-head .headercontent {background-color:rgba(255, 255, 255, .9);height:120rpx;overflow: hidden;padding:10rpx;box-sizing: border-box;max-width:270px;}
+.shop-head .shopname {font-size:32rpx;color:#343434;height:60rpx;overflow: hidden;white-space:nowrap;text-overflow: ellipsis;}
+.shop-head .inline-attr {color:#cfa877;font-weight: 300;display: inline-block;}
+.shop-head .attr {color:#cfa877;font-weight: 100;}

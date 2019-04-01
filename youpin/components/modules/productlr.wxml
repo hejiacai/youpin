@@ -1,0 +1,12 @@
+<view class="module-product-lrs b-b b-t">
+    <navigator url="/pages/product/index?id={{product.id}}">
+        <view class="flex-wrp">
+            <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+            <view class="flex-grow">
+                <view class="name">{{product.name}}</view>
+                <view class="price" wx:if="{{product.multiple_price}}">￥ {{product.price_min}}</view>
+                <view class="price" wx:else>￥ {{product.price}}</view>
+            </view>
+        </view>
+    </navigator>
+</view>

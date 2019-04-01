@@ -1,0 +1,17 @@
+<view>
+    <view class="evaluate b-t" wx:if="{{product.extras.evaluates && product.extras.evaluates.length}}" wx:for="{{product.extras.evaluates}}" wx:key="index">
+        <view class="flex-wrp evaluate-box">
+            <view class="userCover">
+                <view class="cover" style="background-image:url('{{item.extras.user.headimgurl}}')"></view>
+            </view>
+            <view clsas="flex-grow">
+                <view class="evaluate-title">
+                    <text class="well" wx:if="{{item.evaluate}}">好评</text>
+                    <text class="bad" wx:else>差评</text>
+                    <text class="time">{{item.extras.created_at_humans}}</text>
+                </view>
+                <view class="econtent">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+</view>

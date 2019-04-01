@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 300,
+    "usingComponents": {
+        "writing": "/components/modules/writing"
+    }
+}

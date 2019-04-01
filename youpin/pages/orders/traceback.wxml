@@ -1,0 +1,42 @@
+<!--pages/orders/trace.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class="traces">
+    <view class="trace  b-t b-b" wx:if="{{order.payed_at}}">
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view class="flex-grow">订单编号</view>
+                <view>{{order.out_trade_no}}</view>
+            </view>
+        </view>
+
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view class="flex-grow">回寄状态</view>
+                <view>{{order.trace_back_at ? '已回寄' : '未回寄'}}</view>
+            </view>
+        </view>
+
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view>快递公司</view>
+                <view class="flex-grow">
+                    <input class="inlineinput" name="traceback_name" value="{{order.traceback_name}}"></input>
+                </view>
+            </view>
+        </view>
+
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view>快递单号</view>
+                <view class="flex-grow">
+                    <input class="inlineinput" name="traceback_no" value="{{order.traceback_no}}"></input>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="bottom-area" style="padding-top:40rpx;">
+    <button class="btn main-btn btn-cent" formType="submit">提交保存</button>
+</view>
+</form>

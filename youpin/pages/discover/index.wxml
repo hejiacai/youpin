@@ -1,0 +1,60 @@
+<!--pages/discover/index.wxml-->
+<view class="fullpage">
+    <view class="header b-b">
+        <view class="{{swiperCurrent==0 ? 'active' : ''}}" data-index="0" bindtap="switchnav">
+            <text class="icon-wenzhang iconfont"></text> 优品推荐</view>
+        <view class="{{swiperCurrent==1 ? 'active' : ''}}" data-index="1" bindtap="switchnav">
+            <text class="icon-dianpu1 iconfont"></text> 好店推荐</view>
+    </view>
+
+    <view class="pull-loading">
+        <text>{{pullLoadingText}}</text>
+    </view>
+
+    <swiper style="height:{{currentHeight}};" bindchange="swiperChange" current="{{swiperCurrent}}">
+        <swiper-item wx:for="{{lists}}" wx:for-index="lIndex" wx:for-item="lData" wx:key="lIndex">
+            <view wx:if="{{!lData.loaded}}" class="nullData lists{{lIndex}}" style="height:calc(100vh - 80rpx);">
+                <text>加载中，请稍候…</text>
+            </view>
+
+            <view wx:if="{{lData.loaded && !lData.data.length}}" class="nullData lists{{lIndex}}" style="height:calc(100vh - 80rpx);">
+                <text>暂无数据</text>
+            </view>
+
+            <view class="lists lists{{lIndex}}" wx:if="{{lData.loaded && lData.data.length && swiperCurrent=='0'}}">
+                <view class="subnav b-b" wx:if="{{swiperCurrent==0}}">
+                    <view wx:for="{{writingmenus}}" wx:key="index">
+                        <navigator url="/pages/discover/menu?id={{item.id}}">
+                            <view class="cover" style="background-image:url('{{item.cover}}')"></view>
+                            <view class="name">{{item.name}}</view>
+                        </navigator>
+                    </view>
+                </view>
+                <view class="writings-box">
+                    <block wx:for="{{lData.data}}" wx:for-item="item" wx:key="{{item.id}}">
+                        <writing wx:if="{{item}}" article="{{item}}"></writing>
+                    </block>
+                </view>
+            </view>
+
+            <view class="lists lists{{lIndex}}" wx:if="{{lData.data.length && swiperCurrent=='1'}}">
+                <view class="module-product-box">
+                    <view class="b-t b-b">
+                        <view class="module-product-lrs b-b" wx:for="{{lData.data}}" wx:for-item="shop" wx:key="index">
+                            <navigator url="/pages/shop/index?id={{shop.id}}">
+                                <view class="flex-wrp">
+                                    <view class="cover" style="background-image:url('{{shop.header_img}}')"></view>
+                                    <view class="flex-grow right-shop">
+                                        <view class="shopname">{{shop.name}}</view>
+                                        <view class="desg">{{shop.desg}}</view>
+                                    </view>
+                                </view>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </swiper-item>
+    </swiper>
+</view>

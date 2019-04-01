@@ -1,0 +1,92 @@
+<view class="loading" style="height:100vh" wx:if="{{loading}}">加载中...</view>
+<view wx:if="{{!loading}}">
+    <view class="page-header">
+        <view class="header-container b-t b-b">
+            <view class="header">
+                <!-- <view class="location">
+                    <text class="iconfont icon-dingwei"></text>上海
+                </view> -->
+
+                <view class="search-bar">
+                    <navigator url="/pages/search/index">
+                        <view class="search-bar-input">
+                            <text class="iconfont icon-sousuo"></text> 输入需要查询的产品或商家</view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <view class="navbar b-b">
+            <scroll-view scroll-x scroll-into-view="item{{currentIndex}}" scroll-with-animation="{{true}}">
+                <view class="navbar-box">
+                    <view id="item0" class="navbar-item {{currentIndex == 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="changeSwiper">首页</view>
+                    <block wx:for="{{channels}}" wx:for-item="channel" wx:for-index="cindex" wx:key="cindex">
+                        <view id="item{{cindex+1}}" data-index="{{cindex+1}}" class="navbar-item {{currentIndex == cindex+1 ? 'active' : ''}}" bindtap="changeSwiper">{{channel.name}}</view>
+                    </block>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <view class="fix-header">到顶啦</view>
+
+    <swiper style="height:calc(100vh - 170rpx);" bindchange="swiperChange" current="{{currentIndex}}" duration="200">
+        <swiper-item data-id="0">
+            <scroll-view scroll-y style="height:100%;" enable-back-to-top="{{true}}">
+                <view wx:if="{{indexpage.banner}}">
+                    <view class="banners">
+                        <swiper indicator-dots autoplay interval="4000" duration="500" style="height:{{indexpage.banner_height*2}}rpx;" circular indicator-color="#ffffff" indicator-active-color="#f96a5a">
+                            <block wx:for="{{indexpage.banner_data}}" wx:key="bindex" wx:key="bindex">
+                                <swiper-item>
+                                    <navigator url="{{item.navigator}}">
+                                        <image src="{{item.path}}" class="slide-image" style="width:100%;" mode="widthFix" />
+                                    </navigator>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <view class="banners-footer b-t b-b" wx:if="{{indexpage.banner_footer}}">
+                        <view class="flex-wrp">
+                            <view class="flex-item text-center" wx:for="{{indexpage.banner_footer_data}}" wx:key="index">
+                                <text class="iconfont icon-check"></text> {{item.name}}</view>
+                        </view>
+                    </view>
+                </view>
+
+                <modules wx:if="{{indexpage.extras.modules.length}}" modules="{{indexpage.extras.modules}}"></modules>
+
+                <view class="page-footer">
+                    <text>到底啦</text>
+                </view>
+            </scroll-view>
+        </swiper-item>
+        <block wx:for="{{channels}}" wx:for-item="channel" wx:for-index="cindex" wx:key="cindex">
+            <swiper-item>
+                <view class="box b-t b-b" style="min-height:100%;" wx:if="{{!channel.loaded}}">
+                    <view class="box-loading">
+                        正在加载 《{{channel.name}}》，请稍候…
+                    </view>
+                </view>
+                <view wx:else>
+                    <scroll-view scroll-y style="height:calc(100vh - 170rpx);" enable-back-to-top="{{true}}">
+                        <view style="{{channel.datas.extras.style}} min-height:calc(100vh - 170rpx);box-sizing: border-box">
+                            <view wx:if="{{channel.datas.banner}}">
+                                <view class="banners">
+                                    <swiper indicator-dots autoplay interval="4000" duration="500" style="height:{{indexpage.banner_height*2}}rpx;" circular indicator-color="#ffffff" indicator-active-color="#f96a5a">
+                                        <block wx:for="{{channel.datas.banner_data}}" wx:key="bindex" wx:key="bindex">
+                                            <swiper-item>
+                                                <navigator url="{{item.navigator}}">
+                                                    <image src="{{item.path}}" class="slide-image" style="width:100%;" mode="widthFix" />
+                                                </navigator>
+                                            </swiper-item>
+                                        </block>
+                                    </swiper>
+                                </view>
+                            </view>
+                            <modules modules="{{channel.datas.extras.modules}}"></modules>
+                        </view>
+                    </scroll-view>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

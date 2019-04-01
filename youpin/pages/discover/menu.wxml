@@ -1,0 +1,37 @@
+<view>
+    <view class="navbars b-b">
+        <scroll-view scroll-x wx:if="{{showPage}}" style="width:100%;" scroll-into-view="item{{currentId}}">
+            <view class="scroll-container">
+                <view id="item{{bar.id}}" wx:for="{{navbar}}" wx:for-item="bar" wx:key="{{index}}" data-index="{{index}}" data-id="{{bar.id}}" bindtap="changeSwiperIndex" class="navbar-item {{bar.id==currentId ? 'active' : ''}}">{{bar.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+
+    <view class="pull-loading">
+        <text>{{pullLoadingText}}</text>
+    </view>
+
+    <swiper style="height:{{currentHeight}};" bindchange="swiperChange" current="{{currentIndex}}">
+        <swiper-item wx:for="{{navbar}}" wx:for-index="nIndex" wx:for-item="lData" wx:key="nIndex">
+            <view wx:if="{{!lData.loaded}}">
+                <view style="padding-top:100rpx;text-align:center;color:#999;">正在加载《{{lData.name}}》，请稍候…</view>
+            </view>
+            <view wx:if="{{lData.loaded && !lData.extras.writings.length}}" class="nullData lists{{lData.id}}" style="height:calc(100vh - 124rpx);">
+                <view style="padding-top:100rpx;text-align:center;color:#999;">暂无数据</view>
+            </view>
+            <view class="lists lists{{lData.id}}" wx:if="{{lData.loaded && lData.extras.writings.length}}">
+                <view class="writings-box" style="background-color:#fff;">
+                    <block wx:for="{{lData.extras.writings}}" wx:for-item="item" wx:key="{{item.id}}">
+                        <writing wx:if="{{item}}" article="{{item}}"></writing>
+                    </block>
+                </view>
+                <view class="page-footer" wx:if="{{lData.nextpageurl}}">
+                    <text>加载中</text>
+                </view>
+                <view class="page-footer" wx:else>
+                    <text>到底啦</text>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

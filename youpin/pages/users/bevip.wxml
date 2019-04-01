@@ -1,0 +1,28 @@
+<!--pages/users/bevip.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view>
+        <image src="https://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/spec/vip.jpg" style="width:100%;" mode="widthFix"></image>
+    </view>
+
+    <view class="form-box">
+
+        <view class="input-area">
+            <view class="input-area-label">姓名</view>
+            <input name="name" bindinput="setName" type="text" class="input" value="{{userinfo.name}}" placeholder="真实姓名"/>
+        </view>
+
+        <view class="input-area">
+            <view class="input-area-label">手机号码</view>
+            <view class="flex-wrp">
+                <view class="flex-grow">
+                    <view class="input-wrp">{{userinfo.phone ? userinfo.phone : '点击右侧获取手机号码'}}</view>
+                </view>
+                <view><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="input-wrp-button">点击自动获取</button></view>
+            </view>
+        </view>
+
+        <view class="bottom-area {{userinfo && userinfo.phone && name ? '' : 'not'}}">
+            <button class="btn main-btn btn-cent" formType="submit">立即注册</button>
+        </view>
+    </view>
+</form>

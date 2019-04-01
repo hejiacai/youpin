@@ -1,0 +1,28 @@
+<!--components/modules/cartitem.wxml-->
+<view class="shopcart-item b-b">
+    <view class="product-title">
+        <view>{{cartitem.product_mirror.name}}</view>
+    </view>
+    <view class="flex-wrp">
+        <view>
+            <view class="cover" style="background-image:url('{{cartitem.product_mirror.cover[0]}}')"></view>
+        </view>
+        <view class="flex-grow">
+            <view class="product-sku-attr">
+                <view>规格：
+                    <text>{{cartitem.sku_mirror.selection ? cartitem.sku_mirror.selection : '默认规格'}}</text>
+                </view>
+            </view>
+            <view class="product-footer flex-wrp">
+                <view class="product-price flex-grow">单价：￥ {{cartitem.price}} 元</view>
+                <view class="product-empty">
+                    <view>× {{cartitem.amount}}</view>
+                </view>
+            </view>
+            <view class="product-item-amount">
+                <view wx:if="{{cartitem.sku_id}}">运费：{{cartitem.sku_mirror.free_delivery ? '包邮' : (cartitem.sku_mirror.delivery_way ? '到付' : '￥ '+ cartitem.delivery + ' 元')}}</view>
+                <view wx:else>运费：{{cartitem.product_mirror.free_delivery ? '包邮' : (cartitem.product_mirror.delivery_way ? '到付' : '￥ '+cartitem.delivery + ' 元')}}</view>
+            </view>
+        </view>
+    </view>
+</view>

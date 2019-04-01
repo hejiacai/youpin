@@ -1,0 +1,276 @@
+<!--components/modules/module.wxml-->
+<view class="modules" wx:if="{{modules.length}}">
+    <view class="module" wx:for="{{modules}}" wx:for-item="item" wx:key="index">
+        <view class="{{item.style.border_t ? 'b-t' : ''}} {{item.style.border_b ? 'b-b' : ''}}">
+
+            <view wx:if="{{item.type=='image'}}" style="{{item.extras.comput_style}}">
+                <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                <navigator wx:if="{{item.data.navigator}}" url="{{item.data.navigator}}">
+                    <image src="{{item.data.path}}" style="width:100%" mode="widthFix"></image>
+                </navigator>
+                <image wx:else src="{{item.data.path}}" style="width:100%" mode="widthFix"></image>
+            </view>
+
+            <view wx:if="{{item.type=='text'}}" style="{{item.extras.comput_style}}">
+                <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                <view style="{{item.extras.comput_text_style}}">{{item.data.content}}</view>
+            </view>
+
+            <view wx:if="{{item.type=='imagelrot'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+
+                    <view class="el-row sult">
+                        <view class="el-col-50">
+                            <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                <view class="lro" style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                            </navigator>
+                            <view wx:else class="lro" style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                        </view>
+                        <view class="el-col-50">
+                            <view class="lrt">
+                                <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                            </view>
+                            <view class="lrt">
+                                <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagelrto'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+
+                    <view class="el-row sult">
+                        <view class="el-col-50">
+                            <view class="lrt">
+                                <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                            </view>
+                            <view class="lrt">
+                                <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                            </view>
+                        </view>
+                        <view class="el-col-50">
+                            <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                                <view class="lro" style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                            </navigator>
+                            <view wx:else class="lro" style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagetbot'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+
+                    <view class="tbo" style="padding-bottom:20rpx;">
+                        <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                            <view style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                        </navigator>
+                        <view wx:else style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                    </view>
+                    <view class="el-row sult">
+                        <view class="el-col-50">
+                            <view class="tbt">
+                                <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                            </view>
+                        </view>
+                        <view class="el-col-50">
+                            <view class="tbt">
+                                <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagetbto'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+
+                    <view class="el-row sult">
+                        <view class="el-col-50">
+                            <view class="tbt">
+                                <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[0].path+')'}}"></view>
+                            </view>
+                        </view>
+                        <view class="el-col-50">
+                            <view class="tbt">
+                                <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                    <view style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                                </navigator>
+                                <view wx:else style="{{'background-image:url('+item.data[1].path+')'}}"></view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="tbo" style="padding-top:20rpx;">
+                        <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                            <view style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                        </navigator>
+                        <view wx:else style="{{'background-image:url('+item.data[2].path+')'}}"></view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='productfull'}}" style="{{item.extras.comput_style}}">
+                <view class="module-product-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="module-product-full" wx:for="{{item.extras.products}}" wx:for-item="product">
+                        <navigator url="/pages/product/index?id={{product.id}}">
+                            <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+                            <view class="name">{{product.name}}</view>
+                            <view class="price" wx:if="{{product.multiple_price}}">￥ {{product.price_min}}</view>
+                            <view class="price" wx:else>￥ {{product.price}}</view>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='productlrs'}}" style="{{item.extras.comput_style}}">
+                <view class="module-product-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="b-t b-b">
+                        <view class="module-product-lrs b-b" wx:for="{{item.extras.products}}" wx:for-item="product">
+                            <navigator url="/pages/product/index?id={{product.id}}">
+                                <view class="flex-wrp">
+                                    <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+                                    <view class="flex-grow">
+                                        <view class="name">{{product.name}}</view>
+                                        <view class="price" wx:if="{{product.multiple_price}}">￥ {{product.price_min}}</view>
+                                        <view class="price" wx:else>￥ {{product.price}}</view>
+                                    </view>
+                                </view>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='producttwo'}}" style="{{item.extras.comput_style}}">
+                <view class="module-product-box">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="module-product-two">
+                        <view class="product-two-item" wx:for="{{item.extras.products}}" wx:for-item="product" wx:for-index="pindex" wx:key="index" style="padding-bottom:{{item.extras.products.length > pindex+2 ? 10 : 0}}px">
+                            <view style="background-color:#fff;">
+                                <navigator url="/pages/product/index?id={{product.id}}">
+                                    <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+                                    <view style="padding:5px;">
+                                        <view class="name">{{product.name}}</view>
+                                        <view class="price" wx:if="{{product.multiple_price}}">￥ {{product.price_min}}</view>
+                                        <view class="price" wx:else>￥ {{product.price}}</view>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagetwo'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-row">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="flex-wrp">
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                <image style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                <image style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagethree'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-row">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="flex-wrp">
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                <image style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                <image style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                                <image style="width:100%;" src="{{item.data[2].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[2].path}}" mode="widthFix"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:if="{{item.type=='imagefour'}}" style="{{item.extras.comput_style}}">
+                <view class="module-image-row">
+                    <view class="module-inner-title" wx:if="{{item.style.title}}" style="{{item.extras.comput_title_style}}">{{ item.style.title }}</view>
+                    <view class="flex-wrp">
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[0].navigator}}" url="{{item.data[0].navigator}}">
+                                <image style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[0].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[1].navigator}}" url="{{item.data[1].navigator}}">
+                                <image style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[1].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[2].navigator}}" url="{{item.data[2].navigator}}">
+                                <image style="width:100%;" src="{{item.data[2].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[2].path}}" mode="widthFix"></image>
+                        </view>
+                        <view class="flex-item">
+                            <navigator wx:if="{{item.data[3].navigator}}" url="{{item.data[3].navigator}}">
+                                <image style="width:100%;" src="{{item.data[3].path}}" mode="widthFix"></image>
+                            </navigator>
+                            <image wx:else style="width:100%;" src="{{item.data[3].path}}" mode="widthFix"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+
+    </view>
+</view>
+
+<view wx:else class="empty-module">暂无数据</view>

@@ -1,0 +1,189 @@
+/* components/modules/module.wxss */
+@import "/app.wxss";
+
+.modules .module:last-child {
+    margin-bottom: 0;
+}
+
+.module {
+    position: relative;
+}
+
+.module+.module::before {
+    display: none;
+}
+
+.empty-module {
+    padding: 100rpx;
+    padding-bottom: 80rpx;
+    text-align: center;
+    color: #999;
+}
+
+image {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.el-row {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.el-row::after {
+    content: "";
+    clear: both;
+    float: none;
+    width: 100%;
+    display: block;
+}
+
+.el-row.sult {
+    margin-left: -10rpx;
+    margin-right: -10rpx;
+    box-sizing: border-box;
+}
+
+.el-col-50 {
+    display: block;
+    width: 50%;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    float: left;
+}
+
+.module-image-box {
+    padding: 20rpx;
+    overflow: hidden;
+}
+
+.module-image-box .lro {
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.module-image-box .lrt {
+    padding-bottom: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.module-image-box .lrt view {
+    position: absolute;
+    left: 0px;
+    top: 0rpx;
+    right: 0px;
+    bottom: 0px;
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.module-image-box .lrt:first-child view {
+    bottom: 10rpx;
+}
+
+.module-image-box .lrt:last-child view {
+    top: 10rpx;
+}
+
+.module-image-box .tbo view {
+    display: block;
+    width: 100%;
+    padding-bottom: 25%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.module-image-box .tbt view {
+    display: block;
+    width: 100%;
+    padding-bottom: 50%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.module-inner-title {
+    font-size: 18px;
+    line-height: 1.5em;
+    font-weight: 300;
+}
+
+.module-product-full {
+    margin: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 0 8px #dfdfdf;
+}
+
+.module-product-full + .module-product-full {
+    margin-top: 10px;
+}
+
+.module-product-full .cover {
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.module-product-full .name {
+    padding: 20rpx;
+    line-height: 1.5em;
+    font-size: 24rpx;
+}
+
+.module-product-full .price {
+    padding: 0 20rpx;
+    padding-bottom: 20rpx;
+    line-height: 1em;
+    font-size: 32rpx;
+    color: #fb6955;
+}
+
+.module-product-lrs {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.module-product-lrs .cover {
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.module-product-lrs .name {
+    line-height: 20px;
+    height: 40px;
+    overflow: hidden;
+    word-break:break-all;
+    word-wrap:break-word;
+    max-width: 285px;
+}
+
+.module-product-lrs .price {
+    line-height: 20px;
+    height: 20px;
+    font-size: 16px;
+    color: #fb6955;
+}
+
+.module-product-two {margin:0 -5px;}
+.product-two-item {padding:0 5px;width:50%;display: inline-block;box-sizing: border-box;}
+.product-two-item .cover{ width:100%;padding-bottom:100%;background-repeat:no-repeat;background-size:cover;background-position:center;}
+.product-two-item .name{line-height:20px;height:20px;overflow:hidden;box-sizing:border-box;word-break:break-all;word-wrap:break-word;}
+.product-two-item .price{line-height:20px;height:20px;font-size:16px;color:#fb6955;}

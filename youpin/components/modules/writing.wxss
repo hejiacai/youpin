@@ -1,0 +1,19 @@
+/* components/modules/writing.wxss */
+@import "/app.wxss";
+
+.writing-item {padding:25rpx 0; margin:0 25rpx;}
+.writing-item .cover {background-repeat:no-repeat;background-size: cover;background-position: center; }
+.writing-item .imagelr .title{max-width: 420rpx;color:#232323;height:138rpx;line-height: 46rpx;overflow: hidden;font-size:30rpx;}
+.writing-item .imagelr .time {width:420rpx;color:#999;height:32rpx;font-size:24rpx;}
+.writing-item .imagelr .cover {width: 230rpx;height:170rpx;}
+.writing-item .imagelr .cover image {width: 230rpx;height:170rpx;}
+
+.writing-item .imagetb .title{color:#232323;line-height:48rpx;padding-bottom:25rpx;font-size:30rpx;}
+.writing-item .imagetb .cover {width: 100%;height:520rpx;}
+.writing-item .imagetb .cover image {width: 100%;height:520rpx;}
+.writing-item .imagetb .time {padding-top:25rpx;color:#999;font-size:24rpx;}
+
+.writing-item .images .title{color:#232323;line-height:48rpx;padding-bottom:25rpx;font-size:30rpx;}
+.writing-item .images .time {color:#999;height:32rpx;font-size:24rpx;padding-top:25rpx;}
+.writing-item .images .covers {width: 100%;height:170rpx;}
+.writing-item .images .covers .cover {width: 230rpx;height:170rpx;margin:0 auto;}

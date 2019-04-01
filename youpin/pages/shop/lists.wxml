@@ -1,0 +1,41 @@
+<view class="page-header">
+    <view class="header-container b-t b-b">
+        <view class="header">
+            <!-- <view class="location">
+                    <text class="iconfont icon-dingwei"></text>上海
+                </view> -->
+
+            <view class="search-bar">
+                <navigator url="/pages/search/index">
+                    <view class="search-bar-input">
+                        <text class="iconfont icon-sousuo"></text> 输入需要查询的产品或商家</view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="fix-header">到顶啦</view>
+<view wx:if="{{!loading}}">
+    <view wx:if="{{shops.length}}">
+        <view class="module-product-box">
+            <view class="b-t b-b">
+                <view class="module-product-lrs b-b" wx:for="{{shops}}" wx:for-item="shop" wx:key="index">
+                    <navigator url="/pages/shop/index?id={{shop.id}}">
+                        <view class="flex-wrp">
+                            <view class="cover" style="background-image:url('{{shop.header_img}}')"></view>
+                            <view class="flex-grow right-shop">
+                                <view class="shopname">{{shop.name}}</view>
+                                <view class="desg">{{shop.desg}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else style="padding-top:200rpx;color:#999;text-align:center">无相关数据</view>
+</view>
+
+<view wx:else style="padding-top:200rpx;color:#999;text-align:center">加载中，请稍候…
+</view>

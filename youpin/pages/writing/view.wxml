@@ -1,0 +1,39 @@
+<!--pages/writing/view.wxml-->
+<view class="articles">
+    <view class="header">
+        <view class="title">{{writing.title}}</view>
+        <view class="editor">
+            <view class="flex-wrp">
+                <view class="flex-grow">
+                    <view class="cover" style="background-image:url('{{writing.extras.editor.editor_cover}}')"></view>
+                    <view class="name">{{writing.extras.editor.name}}</view>
+                </view>
+                <view class="date">{{writing.published_at}}</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="content">
+        <block wx:for="{{writing.content}}" wx:key="index">
+            <view wx:if="{{item.type=='text'}}" class="text {{item.navigator ? 'url' : ''}}">
+                <text wx:if="{{!item.navigator}}">{{item.value}}</text>
+                <navigator wx:if="{{item.navigator}}" url="{{item.navigator}}">
+                    <text class="icon-xiaochengxu iconfont"></text>
+                    <text> {{item.value}}</text>
+                </navigator>
+            </view>
+            <view wx:if="{{item.type=='image'}}" class="image">
+                <image src="{{item.value}}" lazy-load style='width:100%;' mode='widthFix' wx:if="{{!item.navigator}}"></image>
+                <navigator wx:if="{{item.navigator}}" url="{{item.navigator}}">
+                    <image src="{{item.value}}" style='width:100%;' mode='widthFix'></image>
+                </navigator>
+            </view>
+            <view wx:if="{{item.type=='product'}}" class="product">
+                <productlr productid="{{item.value}}"></productlr>
+            </view>
+            <view wx:if="{{item.type=='shop'}}" class="shop">
+                <shop shopid="{{item.value}}"></shop>
+            </view>
+        </block>
+    </view>
+</view>

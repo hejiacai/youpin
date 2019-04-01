@@ -1,0 +1,105 @@
+.navbars {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    height: 92rpx;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.navbars::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 92rpx;
+    line-height: 92rpx;
+}
+
+.pull-loading {
+    height: 46px;
+    text-align: center;
+    font-size: 24rpx;
+    color: #888;
+    background-color: #fff;
+}
+
+.scroll-container {
+    white-space: nowrap;
+    height: 92rpx;
+    line-height: 92rpx;
+    position: relative;
+}
+
+.navbar-item {
+    display: inline-block;
+    padding: 0 40rpx;
+    line-height: 92rpx;
+    color: #353535;
+    position: relative;
+}
+
+.navbar-item.active {
+    color: #aa8963;
+}
+
+.navbar-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 40rpx;
+    right: 40rpx;
+    height: 6rpx;
+    background-color: #cfa877;
+}
+
+.swiper-float-botton {
+    transition: 0.2s;
+    left: 40rpx;
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    background: #cfa877;
+}
+
+.lists {
+    box-sizing: border-box;
+    padding: 6rpx 0;
+    margin:0 -6rpx;
+
+}
+
+.list {width: 50%;display: inline-block;padding:5rpx 6rpx;box-sizing: border-box;vertical-align: top;}
+.box {background-color: #fff;}
+.list .cover{background-color: #dedede;background-position: center;background-size: cover;padding-bottom:100%;position: relative;}
+.cancel-notice {
+    color: #000;
+}
+.list.empty .cover::before {
+    content:"";
+    position: absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.list.empty .cover::after {
+    content: "已售罄";
+    position: absolute;
+    top:50%;
+    left:0px;
+    right:0px;
+    height:60rpx;
+    text-align: center;
+    color:#fff;
+    line-height: 60rpx;
+    margin-top:-30rpx;
+    font-size:40rpx;
+    font-weight: 300;
+}
+
+.attrs {padding:16rpx;position: relative}
+.list .name {color:#353535;font-size:26rpx;line-height: 60rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-weight: 300}
+.list .price {color:#000;font-size:28rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}

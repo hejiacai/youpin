@@ -1,0 +1,50 @@
+/* pages/users/addresses.wxss */
+
+.address-box {
+    padding-bottom: 100rpx;
+    color: #343434;
+    font-weight: 300;
+}
+
+.addresses {
+    background-color: #fff;
+}
+
+.address {
+    padding: 30rpx;
+}
+
+.address .name {
+    width: 120rpx;
+    line-height: 2;
+}
+
+.address .phone {
+    line-height: 2;
+}
+
+.address .details {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.address .edit {
+    line-height: 132rpx;
+    padding-left: 10rpx;
+    font-size: 32rpx;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100rpx;
+    background-color: #fff;
+}
+
+.foot-btn {
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+}

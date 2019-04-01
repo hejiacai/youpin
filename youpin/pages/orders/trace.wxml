@@ -1,0 +1,54 @@
+<!--pages/orders/trace.wxml-->
+<view class="traces">
+    <view class="trace  b-t b-b" wx:if="{{order.trace_at}}">
+        <view class="trace-header b-b">
+            {{order.extras.shop.name}}
+        </view>
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view class="flex-grow">订单编号</view>
+                <view>{{order.out_trade_no}}</view>
+            </view>
+        </view>
+
+        <view class="attrs b-b">
+            <view class="flex-wrp">
+                <view class="flex-grow">物流状态</view>
+                <view>{{order.trace_at ? '已发货' : '未发货'}}</view>
+            </view>
+        </view>
+
+        <view class="attrs b-b" wx:if="{{order.trace_at}}">
+            <view class="flex-wrp">
+                <view class="flex-grow">快递公司</view>
+                <view>{{order.trace_name}}</view>
+            </view>
+        </view>
+
+        <view class="attrs b-b" wx:if="{{order.trace_at}}">
+            <view class="flex-wrp">
+                <view class="flex-grow">快递单号</view>
+                <view>{{order.trace_no}}</view>
+            </view>
+        </view>
+        <view class="shopcarts">
+            <view class="shopcart-items b-b">
+                <view class="shopcart-item b-b" wx:for="{{order.extras.shopcarts}}" wx:for-index="index" wx:key="{{item.id}}">
+                    <view class="flex-wrp">
+                        <view>
+                            <view class="cover" style="background-image:url('{{item.product_mirror.cover[0]}}')"></view>
+                        </view>
+                        <view class="flex-grow">
+                            <view class="product-title"><view>{{item.product_mirror.name}}</view></view>
+                            <view class="product-sku-attr"><view>{{item.sku_mirror.selection}}</view></view>
+                            <view class="product-footer flex-wrp">
+                                <view class="product-price flex-grow">￥ {{item.price}} 元</view>
+                                <view class="product-empty">× {{item.amount}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

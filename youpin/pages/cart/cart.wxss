@@ -1,0 +1,45 @@
+/* pages/cart/cart.wxss */
+.nullcart {
+    position: fixed;
+    width: 100%;
+    height:100vh;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top:30vh;
+    text-align: center;
+    font-size:80px;
+    color:#999;
+}
+
+.nullcart view{
+    font-size:28rpx;
+    font-weight: 300;
+}
+
+.shopcart-header {padding:0 30rpx;line-height:80rpx;background-color:#fff;}
+.shopcart-header .iconfont {line-height: 80rpx;vertical-align:top;font-size:50rpx;display: inline-block;padding-right:10rpx;}
+.shopcart-items {background-color:#fff;}
+.shopcart-item {margin-left:30rpx;padding:30rpx;padding-left:0px;font-size:24rpx;}
+.shopcart-items .shopcart-item:last-child::after{display: none;}
+.product-choosen {line-height: 50rpx;padding-right:30rpx;font-size:50rpx;color:#999;}
+.product-choosen.checked {color:#f96a5a;}
+.cover {width:176rpx;height:176rpx;background-repeat: no-repeat;background-position: center;background-size: cover;border:solid 1px #dfdfdf;margin-right:20rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.product-title {color:#343434;font-size:28rpx;font-weight: 300;line-height:60rpx;}
+.product-title view {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.product-sku-attr {height:60rpx;color:#999;font-weight: 300;}
+.product-sku-attr view{max-width:205px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.product-prices {height: 60rpx;display: table;width:100%;}
+.product-prices>view {display: table-cell;vertical-align: bottom;height: 60rpx;width:100%;}
+.product-amount text {border:solid 1px #dfdfdf;display:inline-block;padding:0 20rpx;font-size:26rpx;color:#343434;vertical-align: top;height:26px;}
+.product-amount input{border:solid 1px #dfdfdf;font-size:26rpx;color:#343434;display: inline-block;text-align: center;width:80rpx;vertical-align: top;height:26px;} 
+.product-footer{line-height:56rpx;}
+.product-amount text:first-child{border-right: none;}
+.product-amount text:last-child{border-left: none;}
+.shopcart-footer{height:100rpx;background-color:#fff;line-height: 100rpx;}
+.sure {color:#fff;background-color:#f96a5a;padding:0 80rpx;font-weight: 300;font-size:30rpx;}
+.total {padding-left:30rpx;color:#f96a5a;}
+.empty .product-amount {display: none;}
+.product-empty{display: none;}
+.empty .product-empty {display: block;}
+
+.shopcart-header .inline {display: inline-block;line-height: 80rpx;}

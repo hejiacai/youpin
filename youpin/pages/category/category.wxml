@@ -1,0 +1,31 @@
+<!--pages/club/category.wxml-->
+<view class="current-page">
+    <view class="navs">
+        <scroll-view scroll-y style="height: 100vh;">
+            <view style="min-height:calc(100vh + 4rpx);">
+            <view bindtap="switchCategory" wx:for="{{categories}}" wx:for-item="category" wx:for-index="index" wx:key="{{index}}" class="list {{index==currentIndex ? 'active' : ''}}" data-index="{{index}}" data-id="{{category.id}}">
+                {{category.name}}
+            </view>
+            <view class="swiper-float-botton" style="{{floatButtonStyle}}"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="category">
+        <scroll-view scroll-y style="height: 100vh;">
+            <view class="category-box">
+                <image wx:if="{{currentCategory.iconurl}}" src="{{currentCategory.iconurl}}" mode="widthFix"></image>
+                <view class="category-title">{{currentCategory.name}}</view>
+                <view class="flex-wrp" style="flex-wrap:wrap" wx:if="{{currentCategory.children.length}}">
+                    <view class="category-item" wx:for="{{currentCategory.children}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                        <navigator url="/pages/category/list?id={{currentCategory.id}}&currentId={{item.id}}">
+                            <image src="{{item.iconurl ? item.iconurl : 'https://tonghe-miniapp.oss-cn-shanghai.aliyuncs.com/public/no-image.jpg'}}"></image>
+                            <view class="category-name">{{item.name}}</view>
+                        </navigator>
+                    </view>
+                </view>
+                <view wx:if="{{loaded && !currentCategory.children.length}}" class="nullData">暂无数据</view>
+                <view wx:if="{{!loaded}}" class="nullData">数据加载中，请稍候</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

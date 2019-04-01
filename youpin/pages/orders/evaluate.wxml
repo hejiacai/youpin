@@ -1,0 +1,46 @@
+<!--pages/orders/trace.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view style="padding-bottom:120rpx;">
+        <view class="traces">
+            <view class="trace  b-t b-b">
+                <view class="attrs b-b">
+                    <view class="flex-wrp">
+                        <view class="flex-grow">订单编号</view>
+                        <view>{{order.out_trade_no}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="traces" wx:if="{{order.extras.shopcarts.length}}" wx:for="{{order.extras.shopcarts}}" wx:key="index">
+            <view class="trace b-t b-b">
+                <view class="header b-b">
+                    <view class="flex-wrp">
+                        <view class="cover" style="background-image:url('{{item.product_mirror.cover[0]}}')"></view>
+                        <view class="flex-grow name">{{item.product_mirror.name}}</view>
+                    </view>
+                </view>
+                <view class="attrs b-b">
+                    <view class="flex-wrp">
+                        <view class="flex-grow">是否满意：</view>
+                        <view class="choosen">
+                            <view data-index="{{index}}" data-data="{{1}}" bindtap="changeEvaluate" class="{{item.evaluate ? 'active' : ''}}">
+                                <text class="iconfont icon-haoping"></text>满意</view>
+                            <view data-index="{{index}}" data-data="{{0}}" bindtap="changeEvaluate" class="{{item.evaluate ? '' : 'active'}}">
+                                <text class="iconfont icon-chaping"></text>不满意</view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="content">
+                    <textarea placeholder-class="phcolor" data-index="{{index}}" bindinput="changeContent" placeholder="宝贝满足你的期待吗？说说你的使用心得，分享给想买的他们吧"></textarea>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="footer-btn">
+        <button formType="submit">提交评价</button>
+    </view>
+</form>

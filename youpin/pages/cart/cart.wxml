@@ -1,0 +1,78 @@
+<!--pages/cart/cart.wxml-->
+<view class="nullcart" wx:if="{{!shopcarts || !shopcarts.length}}">
+    <text class="icon-konggouwuche iconfont"></text>
+    <view>去添加点什么吧</view>
+</view>
+
+<view wx:else class="shopcarts b-t">
+    <view class="shopcart-header b-b">
+        <view class="flex-wrp">
+            <view class="flex-item">
+                <view class="header-check {{selectedTotal ? 'checked' :''}}" bindtap="selectionSwitch">
+                    <text class="icon-xuanze iconfont" wx:if="{{selectedTotal}}"></text>
+                    <text class="icon-danxuan iconfont" wx:else></text>
+                    <view class="inline">全选</view>
+                </view>
+            </view>
+            <view class="flex-item text-right" bindtap="selectionClear">
+                <text class="icon-DeleteItemCCAndM iconfont" style='font-size:24rpx;'></text>
+                <view class="inline">清空</view>
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-y style="height:calc(100vh - 180rpx)">
+        <join wx:if="{{userInfo}}" userinfo="{{userInfo}}"></join>
+        <view class="shopcart-items b-b" style="margin-top:16rpx;">
+            <view class="shopcart-item b-b {{item.amount ? '' : 'empty'}}" wx:for="{{shopcarts}}" wx:for-index="index" wx:key="{{item.id}}">
+                <view class="flex-wrp">
+                    <view class="product-choosen {{item.selected ? 'checked' : ''}}" data-id="{{item.id}}" bindtap="switchSelection">
+                        <text class="icon-xuanze iconfont" wx:if="{{item.selected}}"></text>
+                        <text class="icon-danxuan iconfont" wx:else></text>
+                    </view>
+                    <view class="flex-grow"></view>
+                    <view data-id="{{item.id}}" bindtap='selectionRemove'>
+                        <text class="icon-DeleteItemCCAndM iconfont" style='font-size:24rpx;'></text> 删除</view>
+                </view>
+                <view class="product-title">
+                    <view>{{item.product_mirror.name}}</view>
+                </view>
+                <view class="flex-wrp">
+                    <view>
+                        <view data-id="{{item.product_id}}" bindtap="goproduct" class="cover" style="background-image:url('{{item.product_mirror.cover[0]}}')"></view>
+                    </view>
+                    <view class="flex-grow">
+                        <view class="product-sku-attr">
+                            <view>{{item.sku_mirror.selection ? item.sku_mirror.selection : '默认规格'}}</view>
+                        </view>
+                        <view class="product-footer flex-wrp">
+                            <view class="product-price flex-grow">数量：</view>
+                            <view class="product-amount">
+                                <text data-index="{{index}}" bindtap="minusAmount" class="icon-jian iconfont"></text>
+                                <input data-index="{{index}}" bindblur="changeAmount" bindconfirm="changeAmount" type="number" value="{{item.amount}}"></input>
+                                <text data-index="{{index}}" bindtap="plusAmount" class="icon-jia iconfont"></text>
+                            </view>
+                            <view class="product-empty" data-id="{{item.id}}" bindtap="delete">售罄
+                                <text class="iconfont icon-DeleteItemCCAndM"></text>
+                            </view>
+                        </view>
+                        <view class="product-prices">
+                            <view>
+                                <view class="flex-wrp">
+                                    <view class="flex-grow">单价：{{item.price}} 元</view>
+                                    <view wx:if="{{item.sku_id}}">运费：{{item.sku_mirror.free_delivery ? '包邮' : (item.sku_mirror.delivery_way ? '到付' : item.delivery + ' 元')}}</view>
+                                    <view wx:else>运费：{{item.product_mirror.free_delivery ? '包邮' : (item.product_mirror.delivery_way ? '到付' : item.delivery + ' 元')}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="shopcart-footer b-t">
+        <view class="flex-wrp">
+            <view class="flex-grow total">￥{{totalfee}}</view>
+            <view bindtap="makeOrder" class="sure">结算</view>
+        </view>
+    </view>
+</view>

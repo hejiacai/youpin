@@ -1,0 +1,49 @@
+<view>
+    <view class="navbars b-b">
+        <scroll-view scroll-x wx:if="{{showPage}}" style="width:100%;" scroll-into-view="item{{currentId}}">
+            <view class="scroll-container">
+                <view id="item{{bar.id}}" wx:for="{{navbar}}" wx:for-item="bar" wx:key="{{index}}" data-index="{{index}}" data-id="{{bar.id}}" bindtap="changeSwiperIndex" class="navbar-item {{bar.id==currentId ? 'active' : ''}}">{{bar.name}}</view>
+            </view>
+            <!-- <view class="swiper-float-botton" style="{{floatButtonStyle}}"></view>         -->
+        </scroll-view>
+    </view>
+
+    <view class="pull-loading">
+        <text>{{pullLoadingText}}</text>
+    </view>
+
+    <swiper style="height:calc(100vh - 92rpx);" bindchange="swiperChange" current="{{currentIndex}}">
+        <swiper-item wx:for="{{navbar}}" wx:for-index="nIndex" wx:for-item="lData" wx:key="nIndex">
+            <scroll-view scroll-y style="height:calc(100vh - 92rpx);" enable-back-to-top bindscrolltolower="loadMore">
+                <view>
+                    <view wx:if="{{!lData.loaded}}">
+                        <view style="padding-top:100rpx;text-align:center;color:#999;">正在加载《{{lData.name}}》，请稍候…</view>
+                    </view>
+                    <view wx:if="{{lData.loaded && !lData.extras.products.length}}" class="nullData lists{{lData.id}}" style="height:calc(100vh - 92rpx);">
+                        <view style="padding-top:100rpx;text-align:center;color:#999;">暂无产品</view>
+                    </view>
+                    <view wx:if="{{lData.loaded && lData.extras.products.length}}">
+                        <view class="list" wx:for="{{lData.extras.products}}" wx:for-item="item" wx:key="{{item.id}}">
+                            <view class="box">
+                                <navigator url="/pages/product/index?id={{item.id}}">
+                                    <view class="cover" style="background-image:url('{{item.cover ? item.cover[0] : '/images/null.png'}}')"></view>
+                                    <view class="attrs">
+                                        <view class="name">{{item.name}}</view>
+                                        <view class="price" wx:if="{{!item.multiple_price}}">￥{{item.price}}</view>
+                                        <view class="price" wx:else>￥{{item.price_min}}</view>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                        <view class="page-footer" wx:if="{{lData.nextpageurl}}">
+                            <text>加载中</text>
+                        </view>
+                        <view class="page-footer" wx:else>
+                            <text>到底啦</text>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

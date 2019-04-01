@@ -1,0 +1,64 @@
+/* pages/shop/index.wxss */
+.shop-header{background-color:#fff;text-align: center;position: relative;height:500rpx;margin-bottom:20rpx;}
+.shop-header .cover {height:280rpx;width:100%;}
+.shop-header .headerimg {width:200rpx;height:200rpx;border-radius: 50%;margin:0 auto;border:solid 2px #fff;box-shadow: 0 6rpx 6rpx #dedede;}
+.shop-header .content {position: absolute;bottom:10px;left:0px;right:0px;padding:10rpx 0; }
+.shop-header .shopname {font-size:36rpx;font-weight: 300;color:#343434;padding:10rpx 0;}
+.shop-header .attr {color:#cfa877;font-weight: 100;}
+.shop-header .inline-attr {color:#cfa877;font-weight: 300;display: inline-block;padding:10rpx 20rpx}
+
+.shop-head .cover {height:160rpx;width:100%;padding:20rpx 40rpx;box-sizing: border-box;}
+.shop-head .content {height:120rpx;width:100%;}
+.shop-head .headerimg {width:120rpx;height:120rpx;border:solid 2px #fff;margin-right:10rpx;}
+.shop-head .headercontent {background-color:rgba(255, 255, 255, .9);height:120rpx;overflow: hidden;padding:10rpx;box-sizing: border-box;max-width:270px;}
+.shop-head .shopname {font-size:32rpx;color:#343434;height:60rpx;overflow: hidden;white-space:nowrap;text-overflow: ellipsis;}
+.shop-head .inline-attr {color:#cfa877;font-weight: 300;display: inline-block;}
+.shop-head .attr {color:#cfa877;font-weight: 100;}
+.navbar {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #fff;
+    overflow: hidden;
+    font-weight: 300;
+}
+
+.navbar-box {
+    width: auto;
+    overflow: visible;
+    white-space: nowrap;
+    padding: 0 10rpx;
+}
+
+.navbar-box .navbar-item {
+    display: inline-block;
+    padding: 0 24rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+
+.navbar-box .navbar-item.active {
+    position: relative;
+    color: #ff9b6a;
+}
+
+.navbar-box .navbar-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 24rpx;
+    right: 24rpx;
+    height: 4rpx;
+    background-color: #ff9b6a;
+    border-radius: 2rpx;
+}
+
+.footbar {position: fixed;bottom:0px;left:0px;right:0px;height:100rpx;text-align: center;padding:0px;background-color:#fff;}
+.footbar navigator text{display:block;height:60rpx;line-height: 60rpx;font-size:32rpx;}
+.footbar navigator view{line-height: 40rpx;font-size:24rpx;font-weight: 300;}
+.footbar button text{display:block;height:60rpx;line-height: 60rpx;font-size:32rpx;}
+.footbar button view{line-height: 40rpx;font-size:24rpx;font-weight: 300;}
+
+.locked-notice {text-align: center;}
+.locked {text-align: center;padding-top:200rpx;color:#999;padding-bottom:60rpx;}
+.ghost-btn {border: solid 1px #ff9b6a; color:#ff9b6a;display: inline-block;padding:10rpx 40rpx;border-radius: 10rpx;}

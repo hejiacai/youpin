@@ -1,0 +1,82 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/auth/login",
+        "pages/auth/vip",
+        "pages/cart/cart",
+        "pages/cart/makeorder",
+        "pages/category/category",
+        "pages/category/list",
+        "pages/channel/index",
+        "pages/discover/index",
+        "pages/discover/menu",
+        "pages/orders/order",
+        "pages/orders/make",
+        "pages/orders/trace",
+        "pages/orders/payback",
+        "pages/orders/traceback",
+        "pages/orders/evaluate",
+        "pages/payment/pay",
+        "pages/product/index",
+        "pages/product/evaluate",
+        "pages/search/index",
+        "pages/shop/index",
+        "pages/shop/shopmenu",
+        "pages/shop/lists",
+        "pages/users/index",
+        "pages/users/bevip",
+        "pages/users/addresses",
+        "pages/users/addressCreate",
+        "pages/users/evaluate",
+        "pages/writing/view",
+        "pages/tests/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "装修优品",
+        "navigationBarTextStyle": "black"
+    },
+    "networkTimeout": {
+        "request": 10000
+    },
+    "debug": false,
+    "tabBar": {
+        "color": "#353535",
+        "selectedColor": "#f96a5a",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/1.png",
+                "selectedIconPath": "images/1-1.png"
+            },
+            {
+                "pagePath": "pages/category/category",
+                "text": "分类",
+                "iconPath": "images/2.png",
+                "selectedIconPath": "images/2-2.png"
+            },
+            {
+                "pagePath": "pages/discover/index",
+                "text": "优品头条",
+                "iconPath": "images/6.png",
+                "selectedIconPath": "images/6-6.png"
+            },
+            {
+                "pagePath": "pages/cart/cart",
+                "text": "购物车",
+                "iconPath": "images/3.png",
+                "selectedIconPath": "images/3-3.png"
+            },
+            {
+                "pagePath": "pages/users/index",
+                "text": "我",
+                "iconPath": "images/4.png",
+                "selectedIconPath": "images/4-4.png"
+            }
+        ]
+    }
+}

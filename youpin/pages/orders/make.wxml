@@ -1,0 +1,83 @@
+<!--pages/cart/cart.wxml-->
+<view class="nullcart" wx:if="{{!product}}">
+    <text class="icon-konggouwuche iconfont"></text>
+    <view>没有选择商品</view>
+</view>
+
+<view wx:else class="shopcarts b-t">
+    <view class="shopcart-header b-b" bindtap="addressChoosen">
+        <view class="flex-wrp empty-address" wx:if="{{!address}}">
+            <view class="flex-grow">
+                <text class="icon-dingwei iconfont"></text> 请选择收件地址
+            </view>
+            <view>
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+        <view class="flex-wrp address" wx:else>
+            <view class="flex-grow">
+                <view class="phone">
+                    <text class="icon-dingwei iconfont"></text> {{address.userName}} {{address.telNumber}}</view>
+                <view class="details">{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+            </view>
+            <view>
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+    </view>
+
+    <join wx:if="{{userInfo}}" userinfo="{{userInfo}}"></join>    
+
+    <view class="order-attr b-t b-b">
+        <view class="attr b-b">
+            <view class="flex-wrp">
+                <view class="flex-grow">商品合计</view>
+                <view>￥{{totalfee}}</view>
+            </view>
+        </view>
+        <view class="attr">
+            <view class="flex-wrp">
+                <view class="flex-grow">运费合计</view>
+                <view wx:if="{{product.multiple_price}}">
+                    {{sku.free_delivery ? '卖家包邮' : (sku.delivery_way ? '到付' : '￥ '+sku.delivery)}}
+                </view>
+                <view wx:else>
+                    {{product.free_delivery ? '卖家包邮' : (product.delivery_way ? '到付' : '￥ '+product.delivery)}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="shopcart-items b-b">
+        <view class="shopcart-item b-b">
+            <view class="flex-wrp">
+                <view>
+                    <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+                </view>
+                <view class="flex-grow">
+                    <view class="product-title"><view>{{product.name}}</view></view>
+                    <view class="product-sku-attr" wx:if="{{sku}}"><view>{{sku.selection}}</view></view>
+                    <view class="product-sku-attr" wx:else="{{sku}}">默认规格</view>
+                    <view class="product-footer flex-wrp">
+                        <view class="product-price flex-grow">￥ {{price}} 元</view>
+                        <view class="product-empty">× {{amount}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="order-note b-t b-b">
+        <view class="flex-wrp">
+            <view class="note-attr">订单备注</view>
+            <view class="flex-grow"><input bindinput="changeNote" name="note" type="text" placeholder="备注信息 | 特殊要求等" value="{{note}}"></input></view>
+        </view>
+    </view>
+</view>
+
+<view class="shopcart-footer b-t" wx:if="{{product}}">
+    <view class="flex-wrp">
+        <view class="flex-grow total">实付：￥{{total}}</view>
+        <view bindtap="setOrder" class="sure">确认下单</view>
+    </view>
+</view>

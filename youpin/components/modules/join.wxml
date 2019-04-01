@@ -1,0 +1,22 @@
+<!--components/modules/join.wxml-->
+<view class="join" wx:if="{{!userinfo.valited}}">
+    <navigator url="/pages/users/bevip">
+        <view class="flex-wrp">
+            <view class="flex-grow">
+                <view class="head">
+                    <text class="icon-huangguan iconfont"></text> 成为会员</view>
+                <view class="attr">
+                    <view>
+                        <text class="icon-xuanze iconfont"></text> 会员专属优惠
+                    </view>
+                    <view>
+                        <text class="icon-xuanze iconfont"></text> 客服优先接待
+                    </view>
+                </view>
+            </view>
+            <view class="right">
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+    </navigator>
+</view>

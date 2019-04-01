@@ -1,0 +1,10 @@
+.evaluate {background-color: #fff;padding:34rpx;padding-bottom:0px;}
+.evaluate-box {padding-bottom:34rpx;}
+.userCover {padding-right:40rpx;}
+.userCover .cover {width:100rpx;height:100rpx;background-repeat: no-repeat;background-size: cover;background-position: center;border-radius: 50%;box-shadow:0 0 5px #dfdfdf;}
+.evaluate .time {color:#999;font-size:24rpx;display: inline-block;padding-left: 40rpx;}
+.evaluate .econtent {color:#666;line-height: 1.5;padding-top:20rpx;word-break:break-all;}
+.evaluate-footer {line-height: 80rpx;height: 80rpx;color:#666;}
+.evaluate-title {font-size: 24rpx;height:40rpx;width:100%;}
+.evaluate .well {color:#f96a5a;}
+.evaluate .bad {color:#ffc6aa;}

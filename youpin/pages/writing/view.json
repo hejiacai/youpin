@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "productlr": "/components/modules/productlr",
+        "shop": "/components/modules/shop"
+    }
+}

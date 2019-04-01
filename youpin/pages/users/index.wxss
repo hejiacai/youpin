@@ -1,0 +1,101 @@
+/* pages/users/index.wxss */
+
+.user-header {
+    background-color: #f96a5a;
+    height: 200rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding:30rpx 54rpx;
+}
+
+.user-header-cover {
+    width:134rpx;
+    height:134rpx;
+    display: inline-block;
+    margin-right:20rpx;
+    vertical-align: middle;    
+}
+
+.user-header-cover view {
+    border:solid 6rpx #fcb5ad;
+    width:100%;
+    padding-bottom:100%;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.user-header-name {
+    display:block;
+    vertical-align: middle;    
+    color:#fff;
+    padding-left:20rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 80rpx;
+    height:80rpx;
+    font-weight: 300;
+}
+
+.user-header-attr {
+    display:block;
+    vertical-align: middle;    
+    color:#fff;
+    padding-left:20rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 80rpx;
+    height:80rpx;
+    font-weight: 300;
+    font-size:24rpx;
+}
+
+.user-header-buttons {
+    display: block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.user-header-buttons button {
+    display: inline-block;
+    border:solid 1px #fff;
+    color:#fff;
+    padding:0 10rpx;
+    margin-left:20rpx;
+    margin-right:20rpx;
+    font-size:24rpx;
+    line-height: 46rpx;
+    height:50rpx;
+    font-weight: 300;
+}
+
+.user-ad {
+    padding-top:16rpx;
+}
+.user-ad image {
+    display: block;
+    margin:0;
+    padding:0;
+}
+
+.section {
+    background-color: #fff;
+    margin-top:16rpx;
+}
+
+.list-header {
+    line-height: 80rpx;
+    padding:0 30rpx;
+    font-size:30rpx;
+    color:#3f3f3f;
+}
+
+.list-icons label {display: block;text-align: center;height: 80rpx;padding-top:40rpx;}
+.list-icons image{width:80rpx;height:80rpx;}
+.list-icons text {color:#3f3f3f;font-size: 24rpx;text-align: center;display: block;line-height: 1;padding-top:26rpx;padding-bottom:40rpx;}
+
+.list-item {line-height: 80rpx;margin:0 30rpx;font-size:30rpx;color:#3f3f3f;}
+.list-item button {line-height: 80rpx;margin:0;padding:0;font-size:30rpx;color:#3f3f3f;text-align: left;}

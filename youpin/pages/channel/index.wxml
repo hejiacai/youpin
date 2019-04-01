@@ -1,0 +1,4 @@
+<view class="loading" style="height:100vh" wx:if="{{loading}}">加载中...</view>
+<view wx:if="{{!loading}}" style="max-width:100%;overflow:hidden;">
+    <modules wx:if="{{channel.extras.modules.length}}" modules="{{channel.extras.modules}}"></modules>
+</view>

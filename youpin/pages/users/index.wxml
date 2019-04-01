@@ -1,0 +1,110 @@
+<!--pages/users/index.wxml-->
+<view class="user-header">
+    <view class='flex-wrp'>
+        <view>
+            <view class="user-header-cover">
+                <view style="background-image:url('{{userinfo.setted ? userinfo.extras.userinfo.headimgurl : 'https://tonghe-miniapp.oss-cn-shanghai.aliyuncs.com/public/no-image.jpg'}}')"></view>
+            </view>
+        </view>
+        <view class="flex-grow">
+            <view class="user-header-name" wx:if="{{userinfo.setted}}">{{userinfo.valited ? userinfo.name : userinfo.extras.userinfo.nickname}}</view>
+            <view class="user-header-name" wx:if="{{!userinfo.setted}}">请登录后继续</view>
+            <view class="user-header-buttons" wx:if="{{!userinfo.setted || !userinfo.valited}}">
+                <button wx:if="{{!userinfo.setted}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">一键登录</button>
+                <button wx:if="{{userinfo.setted && !userinfo.valited }}" bindtap="bevip">成为会员</button>
+            </view>
+            <view class="user-header-attr" wx:if="{{userinfo.setted && userinfo.valited}}">
+                注册会员
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- <view class="user-ad">
+    <navigator>
+        <image src="http://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/spec/ad.jpg" style="width:100%;" mode="widthFix"></image>
+    </navigator>
+</view> -->
+
+<view class="section">
+    <view class="list-header b-b">
+        <navigator url="/pages/orders/order">
+            <view class="flex-wrp">
+                <view class="flex-grow">我的订单</view>
+                <view>
+                    <text class="icon-you iconfont"></text>
+                </view>
+            </view>
+        </navigator>
+    </view>
+    <view class="list-header b-b">
+        <view class="flex-wrp list-icons">
+            <view class="flex-item">
+                <navigator url='/pages/orders/order?index=1'>
+                    <label>
+                        <image src="http://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/png/639d38adb4109698a134d7b5dcea031bphpelozdr.png"></image>
+                    </label>
+                    <text>待付款</text>
+                </navigator>
+            </view>
+            <view class="flex-item">
+                <navigator url='/pages/orders/order?index=2'>
+                    <label>
+                        <image src="http://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/png/dbeb42d8159a85aa5eeb764a7ebb752ephptDeMok.png"></image>
+                    </label>
+                    <text>待发货</text>
+                </navigator>
+            </view>
+            <view class="flex-item">
+                <navigator url='/pages/orders/order?index=3'>
+                    <label>
+                        <image src="http://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/png/7b015e5ab277233e3351f7b4a9441839phpNGao2x.png"></image>
+                    </label>
+                    <text>待收货</text>
+                </navigator>
+            </view>
+            <view class="flex-item">
+                <navigator url='/pages/orders/order?index=4'>
+                    <label>
+                        <image src="http://tonghe-cms.oss-cn-shanghai.aliyuncs.com/image/png/053d61ca717c7beff88a0a2821852ed4phpmKueRE.png"></image>
+                    </label>
+                    <text>退换/售后</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="list-item b-b">
+        <view class="flex-wrp">
+            <view class="flex-grow">我的关注</view>
+            <view>
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+    </view> -->
+    <view class="list-item b-b" bindtap="evaluate">
+        <view class="flex-wrp">
+            <view class="flex-grow">我的评价</view>
+            <view>
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+    </view>
+    <view class="list-item b-b" bindtap="address">
+        <view class="flex-wrp">
+            <view class="flex-grow">地址管理</view>
+            <view>
+                <text class="icon-you iconfont"></text>
+            </view>
+        </view>
+    </view>
+    <view class="list-item">
+        <button open-type="contact">
+            <view class="flex-wrp">
+                <view class="flex-grow">联系客服</view>
+                <view>
+                    <text class="icon-you iconfont"></text>
+                </view>
+            </view>
+        </button>
+    </view>
+</view>

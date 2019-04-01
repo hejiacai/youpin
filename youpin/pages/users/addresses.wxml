@@ -1,0 +1,28 @@
+<!--pages/users/addresses.wxml-->
+<view class="address-box">
+    <view class="addresses b-t">
+        <view class="address b-b" wx:for="{{addresses}}" wx:key="{{item.id}}">
+            <view class="flex-wrp">
+                <view class="name" data-id="{{item.id}}" bindtap="select">{{item.userName}}</view>
+                <view class="flex-grow" data-id="{{item.id}}" bindtap="select">
+                    <view class="phone">{{item.telNumber}}</view>
+                    <view class="details">{{item.provinceName+item.cityName+item.countyName+item.detailInfo}}</view>
+                </view>
+                <!-- <view class="edit">
+                    <text class="icon-Group iconfont"></text>
+                </view> -->
+            </view>
+        </view>
+    </view>
+</view>
+<view class="footer b-t">
+    <view class="flex-wrp">
+        <view class="flex-item" bindtap="addAddress">
+            <view class="foot-btn" style="color:#f96a5a;"><text class="icon-jia iconfont"></text> 新建地址</view>
+        </view>
+        <view class="flex-item" bindtap="getAddress">        
+            <view class="foot-btn" style="background-color:#f96a5a;"><text class="icon-weixin iconfont"></text> 一键导入</view>
+        </view>
+    </view>
+</view>
+

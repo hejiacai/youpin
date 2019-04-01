@@ -1,0 +1,33 @@
+/* components/modules/join.wxss */
+@import "/app.wxss";
+
+.join {
+    background-color:#fee1e1;
+    margin-top:16rpx;
+    padding:34rpx;
+}
+
+.join .head {
+    color:#f86b5e;
+    font-size:36rpx;
+    height:70rpx;
+}
+
+.join .head text {
+    font-size:36rpx;
+    color:#fdac2a;
+}
+
+.join .attr {
+    height:40rpx;
+}
+.join .attr view {
+    display: inline-block;padding-right:30px;
+    color:#4a4a4a;
+    font-weight: 300;
+}
+.join .attr view text {
+    color:#f76f63;
+}
+
+.join .right {line-height: 110rpx;text-align: right;font-size:40rpx;color:#999;font-weight: 300;}

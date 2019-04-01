@@ -1,0 +1,136 @@
+<!--pages/shop/index.wxml-->
+<view wx:if="{{shop}}">
+    <view wx:if="{{shop.type && shop.type=='published'}}">
+        <view>
+            <!-- <view class="shop-header b-b">
+        <view class="cover cover-image" style="background-image:url('{{shop.cover}}')"></view>
+        <view class="content">
+            <view class="headerimg icon-image" style="background-image:url('{{shop.header_img}}')"></view>
+            <view class="shopname">{{shop.name}}</view>
+            <view class="attr">
+                <view class="inline-attr">
+                    <text class="icon-dingwei iconfont"></text> 上海市</view>|
+                <view class="inline-attr">好评率 {{shop.evaluate}}%</view>
+            </view>
+        </view>
+    </view> -->
+            <view class="shop-head">
+                <view class="cover cover-image" style="background-image:url('{{shop.cover}}')">
+                    <view class="content">
+                        <view class="flex-wrp">
+                            <view class="headerimg icon-image" style="background-image:url('{{shop.header_img}}')"></view>
+                            <view class="flex-grow headercontent">
+                                <view class="shopname">{{shop.name}}</view>
+                                <view class="attr">
+                                    <view class="inline-attr">{{shop.naturename}}</view> |
+                                    <view class="inline-attr">好评率 {{shop.evaluate}}%</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="navbar b-t b-b">
+                <scroll-view scroll-x scroll-into-view="item{{currentIndex}}" scroll-with-animation="{{true}}">
+                    <view class="navbar-box">
+                        <view id="item0" class="navbar-item {{currentIndex == 0 ? 'active' : ''}}" data-index="{{0}}" bindtap="changeSwiper">首页</view>
+                        <block wx:for="{{channels}}" wx:for-item="channel" wx:for-index="cindex" wx:key="cindex">
+                            <view id="item{{cindex+1}}" data-index="{{cindex+1}}" class="navbar-item {{currentIndex == cindex+1 ? 'active' : ''}}" bindtap="changeSwiper">{{channel.name}}</view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </view>
+            <swiper style="height:calc(100vh - 240rpx);" bindchange="swiperChange" current="{{currentIndex}}" duration="200">
+                <swiper-item data-id="0">
+                    <scroll-view scroll-y style="height:100%;" enable-back-to-top="{{true}}">
+                        <view wx:if="{{indexpage.banner}}">
+                            <view class="banners">
+                                <swiper indicator-dots autoplay interval="4000" duration="500" style="height:{{indexpage.banner_height*2}}rpx;" circular indicator-color="#ffffff" indicator-active-color="#f96a5a">
+                                    <block wx:for="{{indexpage.banner_data}}" wx:key="bindex" wx:key="bindex">
+                                        <swiper-item>
+                                            <navigator url="{{item.navigator}}">
+                                                <image src="{{item.path}}" class="slide-image" style="width:100%;" mode="widthFix" />
+                                            </navigator>
+                                        </swiper-item>
+                                    </block>
+                                </swiper>
+                            </view>
+                        </view>
+
+                        <modules wx:if="{{indexpage.extras.modules.length}}" modules="{{indexpage.extras.modules}}"></modules>
+                        <view class="page-footer">
+                            <text>到底啦</text>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <block wx:for="{{channels}}" wx:for-item="channel" wx:for-index="cindex" wx:key="cindex">
+                    <swiper-item>
+                        <view class="box b-t b-b" style="min-height:100%;" wx:if="{{!channel.loaded}}">
+                            <view class="box-loading">
+                                正在加载 《{{channel.name}}》，请稍候…
+                            </view>
+                        </view>
+                        <view wx:else>
+                            <scroll-view scroll-y style="height:calc(100vh - 340rpx);" enable-back-to-top="{{true}}">
+                                <view style="{{channel.datas.extras.style}} min-height:calc(100vh - 340rpx);box-sizing: border-box">
+                                    <view wx:if="{{channel.banner}}">
+                                        <view class="banners">
+                                            <swiper indicator-dots autoplay interval="4000" duration="500" style="height:{{indexpage.banner_height*2}}rpx;" circular indicator-color="#ffffff" indicator-active-color="#f96a5a">
+                                                <block wx:for="{{channel.banner_data}}" wx:key="bindex" wx:key="bindex">
+                                                    <swiper-item>
+                                                        <navigator url="{{item.navigator}}">
+                                                            <image src="{{item.path}}" class="slide-image" style="width:100%;" mode="widthFix" />
+                                                        </navigator>
+                                                    </swiper-item>
+                                                </block>
+                                            </swiper>
+                                        </view>
+                                    </view>
+                                    <modules modules="{{channel.datas.extras.modules}}"></modules>
+                                </view>
+                            </scroll-view>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+
+        <view class="footbar b-t">
+            <view class="flex-wrp">
+                <view class="flex-item">
+                    <navigator url="/pages/shop/shopmenu?id={{shopid}}">
+                        <text class="icon-bar iconfont"></text>
+                        <view>全部商品</view>
+                    </navigator>
+                </view>
+                <view class="flex-item">
+                    <button open-type="share">
+                        <text class="icon-fenxiang1 iconfont"></text>
+                        <view>分享</view>
+                    </button>
+                </view>
+                <view class="flex-item">
+                    <button bindtap="goCart">
+                        <text class="icon-gouwuche iconfont"></text>
+                        <view>购物车</view>
+                    </button>
+                </view>
+                <view class="flex-item">
+                    <button bindtap="goUsers">
+                        <text class="icon-wode iconfont"></text>
+                        <view>我的</view>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{shop.type && shop.type!=='published'}}" class="locked-notice">
+        <view class="locked">您访问的店铺已冻结，整改中</view>
+
+        <view bindtap="gohome" class="ghost-btn">
+            返回首页
+        </view>
+    </view>
+</view>

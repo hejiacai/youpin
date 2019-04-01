@@ -1,0 +1,49 @@
+<!--components/modules/writing.wxml-->
+<view class="writing-item b-b">
+    <navigator url="/pages/writing/view?id={{article.id}}">
+        <view wx:if="{{article.style=='imagetb'}}" class="imagetb">
+            <view class="title">{{article.title}}</view>
+            <view class="cover" style="background-image:url('{{article.cover[0]}}')">
+            </view>
+            <view class="flex-wrp time">
+                <view class="flex-grow">{{article.published_at}}</view>
+                <view class="text-right">{{article.extras.editor.name}}</view>
+            </view>
+        </view>
+
+        <view wx:if="{{article.style=='imagelr'}}" class="imagelr">
+            <view class="flex-wrp">
+                <view class="flex-grow">
+                    <view class="title">{{article.title}}</view>
+                    <view class="flex-wrp time">
+                        <view class="flex-grow">{{article.published_at}}</view>
+                        <view class="text-right">{{article.extras.editor.name}}</view>
+                    </view>
+                </view>
+                 <view class="cover" style="background-image:url('{{article.cover[0]}}')">
+                </view>
+            </view>
+        </view>
+
+        <view wx:if="{{article.style=='images'}}" class="images">
+            <view class="title">{{article.title}}</view>
+            <view class="covers">
+                <view class="flex-wrp">
+                    <view class="flex-item">
+                        <view class="cover" style="background-image:url('{{article.cover[0]}}')"></view>
+                    </view>
+                    <view class="flex-item">
+                        <view class="cover" style="background-image:url('{{article.cover[1]}}')"></view>
+                    </view>
+                    <view class="flex-item">
+                        <view class="cover" style="background-image:url('{{article.cover[2]}}')"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="flex-wrp time">
+                <view class="flex-grow">{{article.published_at}}</view>
+                <view class="text-right">{{article.extras.editor.name}}</view>
+            </view>
+        </view>
+    </navigator>
+</view>

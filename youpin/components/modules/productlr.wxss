@@ -1,0 +1,30 @@
+/* components/modules/module.wxss */
+@import "/app.wxss";
+
+.module-product-lrs {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.module-product-lrs .cover {
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.module-product-lrs .name {
+    line-height: 20px;
+    height: 40px;
+    overflow: hidden;
+    max-width: 285px;
+}
+
+.module-product-lrs .price {
+    line-height: 20px;
+    height: 20px;
+    font-size: 16px;
+    color: #fb6955;
+}

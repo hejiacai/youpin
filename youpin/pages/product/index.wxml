@@ -1,0 +1,183 @@
+<view wx:if="{{showPage}}">
+    <view class="cover" wx:if="{{product.cover.length<=1}}">
+        <image src="{{product.cover}}?x-oss-process=image/resize,w_750,limit_1" mode="widthFix" style="width:100%;"></image>
+    </view>
+
+    <swiper indicator-dots autoplay interval="4000" duration="500" style="height:750rpx;" circular indicator-color="#ffffff" indicator-active-color="#f96a5a" wx:if="{{product.cover.length>1}}">
+        <block wx:for="{{product.cover}}" wx:key="cindex">
+            <swiper-item>
+                <view class="bg-image" style="background-image:url('{{item}}');"></view>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <view class="attrs b-b">
+        <view class="title">{{product.name}}</view>
+        <view class="desg" wx:if="{{product.desg}}">{{product.desg}}</view>
+        <view class="price">
+            <text class="normal" wx:if="{{product.multiple_price && product.price_min < product.price_max}}">￥{{product.price_min}} - {{product.price_max}}</text>
+            <text class="normal" wx:elif="{{product.multiple_price && product.price_min == product.price_max}}">￥{{product.price_min}}</text>
+            <text class="normal" wx:else>￥{{product.price}}</text>
+            <text class="original" wx:if="{{product.original_price !== product.price && !product.multiple_price}}">￥{{product.original_price}}</text>
+            <text class="original" wx:if="{{(product.original_price_min !== product.price_min || product.original_price_max!==product.price_max) && product.multiple_price}}">￥{{product.original_price_min == product.original_price_max ? product.original_price_max : product.original_price_min+' - '+product.original_price_max}}</text>
+        </view>
+        <view wx:if="{{product.multiple_price && (product.vip_price_min < product.price_min || product.vip_price_max < product.price_max)}}" class="vip_price">
+            ￥{{product.vip_price_min
+            < product.vip_price_max ? product.vip_price_min + ' - ' + product.vip_price_max : product.vip_price_min}} <text>会员专属价</text>
+        </view>
+        <view wx:if="{{!product.multiple_price && product.vip_price < product.price}}" class="vip_price">
+            ￥{{product.vip_price}}
+            <text>会员专属价</text>
+        </view>
+        <view class="attr">
+            <view class="flex-wrp">
+                <view class="flex-item">已售 {{product.sold}} 件</view>
+                <view class="flex-item text-right">{{product.sold ? product.evaluate+'% 好评' : '暂无评价'}}</view>
+            </view>
+        </view>
+    </view>
+
+    <join wx:if="{{userInfo}}" userinfo="{{userInfo}}"></join>
+    
+    <view class="specs" wx:if="{{product.multiple_price}}">
+        <view class="spec" wx:for="{{product.extras.specs}}" wx:key="{{item.id}}">
+            <view class="label">{{item.label}}</view>
+            <view class="selections">
+                <text wx:for="{{item.extras.selections}}" wx:key="{{item.id}}">{{item.selection}}</text>
+            </view>
+        </view>
+        <view class="spce-notice b-t">*请点击 “直接购买”或“加购物车”后可选择规格。</view>
+    </view>
+
+    <view class="evaluate" wx:if="{{product.extras.evaluates && product.extras.evaluates.length}}">
+        <navigator url="/pages/product/evaluate?id={{product.id}}">
+            <view class="flex-wrp evaluate-box">
+                <view class="userCover">
+                    <view class="cover" style="background-image:url('{{product.extras.evaluates[0].extras.user.headimgurl}}')"></view>
+                </view>
+                <view class="flex-grow">
+                    <view class="flex-wrp evaluate-title">
+                        <view class="flex-grow">
+                            <text class="well" wx:if="{{product.extras.evaluates[0].evaluate}}">好评</text>
+                            <text class="bad" wx:else>差评</text>
+                        </view>
+                        <view class="time">{{product.extras.evaluates[0].extras.created_at_humans}}</view>
+                    </view>
+                    <view class="econtent">{{product.extras.evaluates[0].content}}</view>
+                </view>
+            </view>
+            <view class="evaluate-footer b-t">
+                <view class="flex-wrp">
+                    <view class="flex-grow">更多评价</view>
+                    <view>
+                        <text class="icon-you iconfont"></text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+
+
+    <view class="content">
+        <block wx:for="{{product.content}}" wx:key="{{product.id}}">
+            <view class="{{item.type}}" wx:if="{{item.type=='text'}}">
+                <text>{{item.value}}</text>
+            </view>
+            <view class="{{item.type}}" wx:if="{{item.type=='image'}}">
+                <image src="{{item.value}}?x-oss-process=image/resize,w_750,limit_1" mode="widthFix"></image>
+            </view>
+        </block>
+    </view>
+
+    <view class="footbar b-t">
+        <view class="flex-wrp">
+            <view class="flex-grow left-btns">
+                <view class="flex-wrp">
+                    <view class="flex-item" bindtap="goShop">
+                        <text class="icon-dianpu iconfont"></text> 店铺
+                    </view>
+                    <view class="flex-item">
+                        <button open-type="contact">
+                            <text class="icon-kefu iconfont"></text> 客服
+                        </button>
+                    </view>
+                    <view class="flex-item" bindtap="goCart">
+                        <text class="icon-jinlingyingcaiwangtubiao07 iconfont"></text> 购物车
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{product.extras.type=='publish'}}" bindtap="addCart" class="footbar-btn sub">加购物车</view>
+            <view wx:if="{{product.extras.type=='publish'}}" bindtap="buy" class="footbar-btn main">直接购买</view>
+            <view wx:if="{{product.extras.type=='unstockable'}}" class="footbar-btn empty">已售罄</view>
+            <view wx:if="{{product.extras.type=='waiting'}}" class="footbar-btn empty-waiting">即将上架</view>
+            <view wx:if="{{product.extras.type=='unpublish'}}" class="footbar-btn empty">已下架</view>
+        </view>
+    </view>
+
+    <view class="body-cover" wx:if="{{addToCart}}"></view>
+
+    <view class="addToCart {{addToCart ? 'show' : ''}}" wx:show="{{addToCart}}">
+        <view class="alertbox">
+            <view class="alertbox-close text-right" bindtap="closeAddToCart">
+                <text class="icon-x iconfont"></text>
+            </view>
+            <view class="alertbox-content b-b" wx:if="{{!product.multiple_price}}">
+                <view class="flex-wrp">
+                    <view class="cover" style="background-image:url('{{product.cover[0]}}');"></view>
+                    <view class="flex-grow info">
+                        <view class="price">
+                            ￥ {{userInfo.valited ? product.vip_price : product.price}}
+                        </view>
+                        <view class="stock">库存：{{product.stock}} {{product.unit}}</view>
+                        <view class="size">规格: 默认</view>
+                    </view>
+                </view>
+            </view>
+            <view class="alertbox-content b-b" wx:if="{{product.multiple_price}}">
+                <view class="flex-wrp">
+                    <view class="cover" style="background-image:url('{{product.cover[0]}}');"></view>
+                    <view class="flex-grow info">
+                        <!-- <view class="price">￥{{currentSelection ? currentSelection.price : product.price_max}}</view> -->
+                        <!-- <view class="price" wx:if="{{product.price_min < product.price_max}}">￥{{currentSelection ? currentSelection.price : product.price_min +' - '+product.price_max}}</view> -->
+                        <view class="price">
+                            ￥{{currentSelection ? (userInfo.valited ? currentSelection.vip_price : currentSelection.price) : (userInfo.valited ? (product.vip_price_min
+                            < product.vip_price_max ? product.vip_price_min + ' - ' + product.vip_price_max : product.vip_price_min) : (product.price_min < product.price_max ? product.price_min + ' - ' +product.price_max: product.price_min ))}} </view>
+                                <view class="stock">库存：{{currentSelection ? currentSelection.stock : '请选择'}}</view>
+                                <view class="size" wx:if="{{currentSelection}}">规格:
+                                    <text style="padding-right:10rpx;" wx:for="{{currentSelection.specs}}" wx:key="{{item.id}}">{{item}}</text>
+                                </view>
+                                <view class="size" wx:else>规格:
+                                    <text style="padding-right:10rpx;" wx:for="{{selections}}" wx:key="{{item.id}}">{{item.selection}}</text>
+                                </view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:if="{{product.extras.specs && product.multiple_price}}" wx:for="{{product.extras.specs}}" wx:key="{{item.id}}" class="alertbox-attr b-b">
+                    <view class="label">{{item.label}}</view>
+                    <view class="selections">
+                        <text wx:for="{{item.extras.selections}}" wx:key="{{item.id}}" wx:for-item="selection" wx:key="{{selection.id}}" class="{{selection.id == selections[item.label]['id'] ? 'active' : ''}} {{selection.disabled ? 'disabled' : ''}}" data-label="{{item.label}}"
+                            data-labelid="{{item.id}}" data-selection="{{selection.selection}}" data-id="{{selection.id}}" data-disabled="{{selection.disabled}}" bindtap="picked">{{selection.selection}}</text>
+                    </view>
+                </view>
+                <view class="alertbox-amount">
+                    <view class="flex-wrp">
+                        <view class="label flex-grow">购买数量</view>
+                        <view class="alertbox-amount-box">
+                            <text class="icon-jian01 iconfont {{amount>1 ? '' : disabled}}" bindtap="minusAmount"></text>
+                            <input bindblur="changeAmount" bindconfirm="changeAmount" confirm-type="done" type="number" value="{{amount}}"></input>
+                            <!-- <text class="amount">{{amount}}</text> -->
+                            <text class="icon-jiahao01 iconfont {{amount<100 ? '' : disabled}}" bindtap="plusAmount"></text>
+                        </view>
+                    </view>
+                </view>
+                <view class="alertbox-button" bindtap="addCartAction" wx:if="{{currentAction=='cart'}}">确定</view>
+                <view class="alertbox-button" bindtap="buyAction" wx:if="{{currentAction=='buy'}}">立即购买</view>
+            </view>
+        </view>
+
+        <view class="top-share">
+            <button open-type="share">
+                <text class="icon-fenxiang1 iconfont"></text>
+            </button>
+        </view>
+    </view>

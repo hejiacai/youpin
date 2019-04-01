@@ -1,0 +1,56 @@
+<!--pages/users/addressCreate.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="form-items b-t b-b">
+        <view class="form-item">
+            <view class="label">收货人姓名</view>
+            <view class="input">
+                <input name="userName" placeholder="长度不超过25个字符"></input>
+            </view>
+        </view>
+
+        <view class="form-item">
+            <view class="label">联系电话</view>
+            <view class="input">
+                <input name="telNumber" placeholder="电话号码或手机号码"></input>
+            </view>
+        </view>
+
+        <view class="form-item">
+            <view class="label">省份</view>
+            <picker bindchange="bindPickerChange" value="{{province}}" range="{{provinces}}" range-key="name">
+                <view class="input">
+                    <view>{{province ? province : '请选择省份'}}</view>
+                </view>
+            </picker>
+        </view>
+
+        <view class="form-item">
+            <view class="label">城市</view>
+            <picker bindchange="bindCityChange" value="{{city}}" range="{{cities}}" range-key="name">
+                <view class="input">
+                    <view>{{city ? city : '请选择城市'}}</view>
+                </view>
+            </picker>
+        </view>
+
+        <view class="form-item">
+            <view class="label">区/县</view>
+            <picker bindchange="bindDistrictChange" value="{{district}}" range="{{districts}}" range-key="name">
+                <view class="input">
+                    <view>{{district ? district : '请选择区/县'}}</view>
+                </view>
+            </picker>
+        </view>
+
+        <view class="form-item">
+            <view class="label">详细地址</view>
+            <view class="input">
+                <input name="detailInfo" placeholder="请输入详细地址信息，如街道、门牌号"></input>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom-area">
+        <button class="btn main-btn btn-cent" formType="submit">确认提交</button>
+    </view>
+</form>

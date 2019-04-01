@@ -1,0 +1,86 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view>
+        <view class="page-header">
+            <view class="header-container b-t b-b">
+                <view class="header">
+                    <view class="search-bar">
+                        <view class="search-bar-input">
+                            <view class="flex-wrp">
+                                <view class="flex-grow">
+                                    <input bindinput="setKeyword" bindconfirm="search" type='text' confirm-type="search" focus="true" placeholder='输入需要查询的产品或商家' value="{{keyword}}"></input>
+                                </view>
+                                <view bindtap='search' class="search">
+                                    <text class="iconfont icon-sousuo"></text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</form>
+
+<view class="fix-header">到顶啦</view>
+
+<view class="result" wx:if="{{result}}">
+    <view class="swiper-header b-t b-b">
+        <view class="flex-wrp">
+            <view class="flex-item swiper-header-item b-r {{currentIndex == 0 ? 'active' : ''}}" data-index="0" bindtap="changeSwiper">
+                <view>产品</view>
+            </view>
+            <view class="flex-item swiper-header-item {{currentIndex == 1 ? 'active' : ''}}" data-index="1" bindtap="changeSwiper">
+                <view>店铺</view>
+            </view>
+        </view>
+    </view>
+
+
+    <swiper style="height:calc(100vh - 190rpx);" bindchange="swiperChange" current="{{currentIndex}}" duration="200">
+        <swiper-item data-id="0">
+            <scroll-view scroll-y style="height:100%;" enable-back-to-top="{{true}}">
+                <view wx:if="{{products.length}}">
+                    <view class="module-product-box">
+                        <view class="b-t b-b">
+                            <view class="module-product-lrs b-b" wx:for="{{products}}" wx:for-item="product" wx:key="index">
+                                <navigator url="/pages/product/index?id={{product.id}}">
+                                    <view class="flex-wrp">
+                                        <view class="cover" style="background-image:url('{{product.cover[0]}}')"></view>
+                                        <view class="flex-grow">
+                                            <view class="name">{{product.name}}</view>
+                                            <view class="price" wx:if="{{product.multiple_price}}">￥ {{product.price_min}}</view>
+                                            <view class="price" wx:else>￥ {{product.price}}</view>
+                                        </view>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else style="padding-top:200rpx;color:#999;text-align:center">无相关数据</view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item data-id="0">
+            <scroll-view scroll-y style="height:100%;" enable-back-to-top="{{true}}">
+                <view wx:if="{{shops.length}}">
+                    <view class="module-product-box">
+                        <view class="b-t b-b">
+                            <view class="module-product-lrs b-b" wx:for="{{shops}}" wx:for-item="shop" wx:key="index">
+                                <navigator url="/pages/shop/index?id={{shop.id}}">
+                                    <view class="flex-wrp">
+                                        <view class="cover" style="background-image:url('{{shop.header_img}}')"></view>
+                                        <view class="flex-grow right-shop">
+                                            <view class="shopname">{{shop.name}}</view>
+                                            <view class="desg">{{shop.desg}}</view>
+                                        </view>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else style="padding-top:200rpx;color:#999;text-align:center">无相关数据</view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

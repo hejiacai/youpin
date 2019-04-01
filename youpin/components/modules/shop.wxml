@@ -1,0 +1,18 @@
+<navigator url="/pages/shop/index?id={{shop.id}}">
+    <view class="shop-head">
+        <view class="cover cover-image" style="background-image:url('{{shop.cover}}')">
+            <view class="content">
+                <view class="flex-wrp">
+                    <view class="headerimg icon-image" style="background-image:url('{{shop.header_img}}')"></view>
+                    <view class="flex-grow headercontent">
+                        <view class="shopname">{{shop.name}}</view>
+                        <view class="attr">
+                            <view class="inline-attr">{{shop.naturename}}</view> |
+                            <view class="inline-attr">好评率 {{shop.evaluate}}%</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</navigator>

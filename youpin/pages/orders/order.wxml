@@ -1,0 +1,87 @@
+<!--pages/appointments/lists.wxml-->
+<view class="container">
+    <view class="flex-wrp flex-col" wx:if="{{showPage}}">
+        <view class="swiper-navbar b-b">
+            <scroll-view scroll-x wx:if="{{showPage}}" style="width:100%;height:92rpx;" scroll-into-view="item{{swiperCurrent}}">
+                <view class="scroll-container">
+                    <view id="item{{index}}" wx:for="{{navbar}}" wx:key="{{index}}" data-index="{{index}}" class="navbar-item {{index==swiperCurrent ? 'active' : ''}}" bindtap="changeSwiperIndex">{{item}}</view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="pull-loading">
+            <text>{{pullLoadingText}}</text>
+        </view>
+        <swiper style="height:{{currentHeight}};" bindchange="swiperChange" current="{{swiperCurrent}}">
+            <swiper-item wx:for="{{lists}}" wx:for-index="lIndex" wx:for-item="lData" wx:key="lIndex">
+                <view wx:if="{{!lData.length}}" class="nullData lists{{lIndex}}" style="height:calc(100vh - 124rpx);">
+                    <text>暂无相关订单</text>
+                </view>
+                <view class="lists lists{{lIndex}}" wx:if="{{lData.length}}">
+                    <view class="list b-b b-t" wx:for="{{lData}}" wx:for-item="item" wx:key="{{item.id}}">
+                        <view class="box">
+                            <navigator url="/pages/trade/view?id={{item.id}}">
+                                <view class="box-title">
+                                    <view class="flex-wrp">
+                                        <view class="flex-grow">订单编号：{{item.out_trade_no}}</view>
+                                        <view class="text-right">
+                                            <text wx:if="{{item.type=='payed'}}" style="color:#999;">{{item.extras.type_text}}</text>
+                                            <text wx:else style="color:#aa8963;">{{item.extras.type_text}}</text>
+                                        </view>
+                                        <view>
+                                            <text class="iconfont icon-icon--"></text>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="box-body">
+                                    <view class="shopcart-items b-b">
+                                        <block wx:for="{{item.extras.shopcarts}}" wx:for-index="index" wx:key="{{item.id}}">
+                                            <cartitem cartitem="{{item}}"></cartitem>
+                                        </block>
+                                    </view>
+                                    <view class="box-body-attr b-b flex-wrp">
+                                        <view>下单时间</view>
+                                        <view class="flex-grow text-right">
+                                            ({{item.extras.created_at_humans}}) {{item.created_at}}
+                                        </view>
+                                    </view>
+
+                                    <view class="box-body-attr b-b flex-wrp" wx:if="{{item.note}}">
+                                        <view>订单备注</view>
+                                        <view class="flex-grow text-right attr-value">
+                                            {{item.note}}
+                                        </view>
+                                    </view>
+                                    <view class="box-body-attr b-b flex-wrp">
+                                        <view>合计运费</view>
+                                        <view class="flex-grow text-right">
+                                            ￥ {{item.deliveryfee}} 元
+                                        </view>
+                                    </view>
+                                    <view class="box-body-attr flex-wrp">
+                                        <view>合计金额</view>
+                                        <view class="flex-grow text-right">
+                                            ￥ {{item.totalfee}} 元
+                                        </view>
+                                    </view>
+                                    <!-- <view class="box-body-attr flex-wrp">
+                                        <view>创建时间</view>
+                                        <view class="flex-grow text-right">{{item.created_at}}</view>
+                                    </view> -->
+                                </view>
+                            </navigator>
+                            <view class="box-footer" wx:if="{{item.type!=='cancel' && item.type!=='expired'  && item.type!=='back' && item.type!=='backed' && item.type!=='complete'}}">
+                                <button wx-if="{{item.type=='success'}}" bindtap="evaluationOrder" data-id="{{item.id}}">评价</button>
+                                <button wx-if="{{item.type=='payed' && item.trace_type=='send'}}" data-id="{{item.id}}" bindtap="traceOrder">物流信息</button>
+                                <button wx-if="{{item.type=='payed'}}" bindtap="payBack" data-id="{{item.id}}">申请退款</button>
+                                <button wx-if="{{item.type=='payed'}}" bindtap="receiving" data-id="{{item.id}}">确认收货</button>
+                                <button wx-if="{{item.type=='created'}}" data-id="{{item.id}}" bindtap="cancelOrder">取消订单</button>
+                                <button wx-if="{{item.type=='created'}}" data-id="{{item.id}}" bindtap="payOrder">支付</button>
+                                <button wx-if="{{item.type=='traceback'}}" data-id="{{item.id}}" bindtap="traceback">回寄</button>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

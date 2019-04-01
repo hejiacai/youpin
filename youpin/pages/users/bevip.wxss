@@ -1,0 +1,50 @@
+/* pages/users/bevip.wxss */
+page {background-color: #fff;}
+
+.input-area {
+    padding:0 30rpx;
+    padding-top:30rpx;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.bottom-area {
+    padding-top:60rpx;
+    padding-bottom:30rpx;
+}
+
+.input-area-label {
+    padding-bottom:16rpx;
+}
+
+input {
+    width: 100%;
+    border:solid 1px #dfdfdf;
+    padding:0 20rpx;
+    box-sizing: border-box;
+    height:80rpx;
+}
+
+.input-wrp {
+    width: 100%;
+    border:solid 1px #dfdfdf;
+    padding:0 20rpx;
+    box-sizing: border-box;
+    height:80rpx;
+    line-height: 76rpx;
+    background-color: rgba(0,0,0,.05);
+}
+
+.input-wrp-button {
+    border:solid 1px #dfdfdf;
+    padding:0 30rpx;
+    box-sizing: border-box;
+    height:80rpx;
+    border-left:none;
+    line-height:76rpx;
+    border-radius: 0;
+}
+
+.form-box {padding-bottom:30rpx;}
+
+.bottom-area.not .main-btn{background-color: #dfdfdf;}
